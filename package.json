@@ -7,17 +7,19 @@
     "start": "node app.js",
     "test": "make test"
   },
-  "homepage": "http://github.com/DBeath/groovr",
+  "homepage": "http://github.com/DBeath/groovrapp",
   "repository": {
     "type": "git",
-    "url": "http://github.com/DBeath/groovr"
+    "url": "http://github.com/DBeath/groovrapp"
   },
   "author": "David Beath",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.6.7",
+    "body-parser": "*",
     "express": ">4.0.0",
     "hbs": "*",
-    "morgan": "*"
+    "morgan": "*",
+    "mongoose": "*",
+    "validator": "*"
   }
 }
