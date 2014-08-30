@@ -64,8 +64,8 @@ app.post('/login', passport.authenticate('local-login', {
 
 app.get('/login', function (req, res) {
   res.render('login', { 
-    message: req.flash('message'),
-    layout: 'login_layout' 
+    message: req.flash('message')
+    //layout: 'login_layout' 
   });
 });
 
@@ -73,8 +73,8 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
   // render the page and pass in any flash data if it exists
   res.render('signup', { 
-    message: req.flash('signupMessage'),
-    layout: 'login_layout' 
+    message: req.flash('signupMessage')
+    //layout: 'login_layout' 
   });
 });
 
