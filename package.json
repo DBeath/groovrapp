@@ -1,0 +1,23 @@
+{
+  "name": "Groovr",
+  "version": "0.1.0",
+  "description": "Groovr application for Wellington Startup Weekend",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "make test"
+  },
+  "homepage": "http://github.com/DBeath/groovr",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/DBeath/groovr"
+  },
+  "author": "David Beath",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.6.7",
+    "express": ">4.0.0",
+    "hbs": "*",
+    "morgan": "*"
+  }
+}
