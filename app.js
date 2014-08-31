@@ -22,7 +22,7 @@ app.engine('html', hbs.__express);
 app.use(express.static(__dirname+'/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(methodOverride());
+//app.use(methodOverride());
 
 var cookiesecret = null;
 if (config.cookiesecret) {
@@ -93,35 +93,39 @@ app.get('/logout', function (req, res) {
 
 app.get('/', function (req, res) {
   res.render('index.html', {
+    message: req.flash('message'),
     title: 'Groovr'
   });
 });
 
-// app.post('/', function (req, res, next) {
-//   if (!req.param('email')) {
-//     console.log('no email');
-//     return res.redirect('/');
-//   };
+app.post('/', function (req, res, next) {
+  console.log(req.body);
+  if (!req.param('email')) {
+    console.log('no email');
+    return res.redirect('/');
+  };
 
-//   if (!validator.isEmail(req.param('email'))) {
-//     console.log('not an email address');
-//     return res.redirect('/');
-//   } else {
-//     var email = req.param('email');
-//     var reg = new Reg();
-//     reg.email = email;
-//     reg.save(function (err) {
-//       if (err) {
-//         console.log(email + 'is already registered');
-//       }
-//       console.log('Registered ' + email);
-//       req.flash('message', 'You have registered ' + email);
-//       return res.redirect('/', {
-//         message: req.flash('message')
-//       });
-//     });
-//   }; 
-// });
+  if (!validator.isEmail(req.param('email'))) {
+    console.log('not an email address');
+    return res.redirect('/');
+  } else {
+    var email = req.param('email');
+    var familyname = req.param('familyname');
+    var givenname = req.param('givenname');
+    var reg = new Reg();
+    reg.email = email;
+    reg.givenname = givenname;
+    reg.familyname = familyname;
+    reg.save(function (err) {
+      if (err) {
+        console.log(email + 'is already registered');
+      }
+      console.log('Registered ' + email);
+      req.flash('message', 'You have registered ' + email);
+      return res.redirect('/');
+    });
+  }; 
+});
 
 // app.use('/', roles.can('access games'));
 app.get('/registered', roles.can('access games'), function (req, res, next) {
